@@ -3,6 +3,7 @@ import StepOne from "./components/StepOne";
 import StepTwo from "./components/StepTwo";
 import StepThree from "./components/StepThree";
 import StepFour from "./components/StepFour";
+import Words from "./components/Words";
 import { generateMatrix, findWords } from "./utils/mindboggleboggle";
 import "./App.css";
 
@@ -27,6 +28,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         words: [...state.words, action.payload],
+      };
+    case "removeWord":
+      const newWords = state.words.filter((e) => e !== action.payload);
+      return {
+        ...state,
+        words: newWords,
       };
     case "regenerateMatrix":
       return {
@@ -59,18 +66,7 @@ function App() {
     <div className="App">
       <h1>Boggle Your Mind</h1>
       {state.currentStep >= 1 && (
-        <div className="words-container-container">
-          Your current words:{" "}
-          <div className="words-container">
-            {state.words.map((word, index) => {
-              return (
-                <div className="word" key={index}>
-                  {word}
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <Words words={state.words} dispatch={dispatch} />
       )}
       {state.currentStep === 0 && <StepOne dispatch={dispatch} />}
       {state.currentStep === 1 && (

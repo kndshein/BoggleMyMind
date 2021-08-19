@@ -30,12 +30,17 @@
 }
 
 .word {
+  cursor: pointer;
   color: white;
   font-weight: 500;
   text-transform: uppercase;
   padding: 3px 10px;
   background-color: rgb(158, 158, 158);
   border-radius: 10px;
+}
+
+.word:hover {
+  background-color: salmon;
 }
 
 .row {
