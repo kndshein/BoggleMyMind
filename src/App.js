@@ -1,6 +1,7 @@
 import React, { useReducer } from "react";
 import StepOne from "./components/StepOne";
 import StepTwo from "./components/StepTwo";
+import StepThree from "./components/StepThree";
 import { generateMatrix } from "./utils/generateMatrix";
 import "./App.css";
 
@@ -8,6 +9,7 @@ const initialState = {
   currentStep: 0,
   words: [],
   matrix: [],
+  found: [],
 };
 
 const reducer = (state, action) => {
@@ -42,7 +44,7 @@ function App() {
       {state.currentStep === 1 && (
         <StepTwo dispatch={dispatch} wordCount={state.words.length} />
       )}
-      {/* {state.currentStep === 3 && <StepThree />} */}
+      {state.currentStep === 2 && <StepThree matrix={state.matrix} />}
     </div>
   );
 }
