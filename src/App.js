@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import StepOne from "./components/StepOne";
 import StepTwo from "./components/StepTwo";
 import StepThree from "./components/StepThree";
+import StepFour from "./components/StepFour";
 import { generateMatrix, findWords } from "./utils/mindboggleboggle";
 import "./App.css";
 
@@ -56,7 +57,7 @@ function App() {
       {state.currentStep >= 2 && (
         <StepThree dispatch={dispatch} matrix={state.matrix} />
       )}
-      {/* {state.currentStep >= 3 && <StepFour/>} */}
+      {state.currentStep >= 3 && <StepFour foundWords={state.found} />}
     </div>
   );
 }

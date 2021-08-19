@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function StepOne({ dispatch, matrix }) {
+export default function StepThree({ dispatch, matrix }) {
   return (
     <div className="matrix-container">
       {matrix.map((row, index) => {
