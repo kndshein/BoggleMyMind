@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useReducer } from "react";
+import "./App.css";
+
+const types = {
+  addWord: "addWord",
+};
+
+const initialState = {
+  words: [],
+  matrix: [],
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case types.addWord:
+      console.log("poop");
+      return state;
+    default:
+      return state;
+  }
+};
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return <div className="App">Hello</div>;
 }
 
 export default App;
