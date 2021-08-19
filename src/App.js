@@ -25,6 +25,8 @@ const reducer = (state, action) => {
         ...state,
         words: [...state.words, action.payload],
       };
+    case "findWords":
+      return state;
     case "nextStep":
       return {
         ...state,
@@ -44,7 +46,9 @@ function App() {
       {state.currentStep === 1 && (
         <StepTwo dispatch={dispatch} wordCount={state.words.length} />
       )}
-      {state.currentStep === 2 && <StepThree matrix={state.matrix} />}
+      {state.currentStep >= 2 && (
+        <StepThree dispatch={dispatch} matrix={state.matrix} />
+      )}
     </div>
   );
 }

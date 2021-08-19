@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function StepOne({ matrix }) {
+export default function StepOne({ dispatch, matrix }) {
   return (
     <div className="matrix-container">
       {matrix.map((row, index) => {
@@ -15,6 +15,13 @@ export default function StepOne({ matrix }) {
           </div>
         );
       })}
+      <button
+        onClick={() => {
+          dispatch({ type: "nextStep" });
+        }}
+      >
+        Find my words!
+      </button>
     </div>
   );
 }
