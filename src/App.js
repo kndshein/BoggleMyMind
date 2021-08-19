@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import StepOne from "./components/StepOne";
+import StepTwo from "./components/StepTwo";
 import "./App.css";
 
 const initialState = {
@@ -11,9 +11,6 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "addWord":
-      console.log("poop");
-      return state;
     case "makeCustom":
       if (action.payload) {
         return {
@@ -37,7 +34,7 @@ function App() {
   return (
     <div className="App">
       <header>Boggle Your Mind</header>
-      {state.currentStep === 0 && <StepOne dispatch={dispatch} />}
+      {state.currentStep === 0 && <StepTwo dispatch={dispatch} />}
     </div>
   );
 }

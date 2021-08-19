@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function StepOne({ dispatch }) {
+export default function StepTwo({ dispatch }) {
   return (
     <>
       <div>Would you like to make your own matrix?</div>
