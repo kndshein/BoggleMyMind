@@ -18,14 +18,18 @@ export default function StepOne({ dispatch }) {
     <>
       <div>How many rows and columns would you like? (between 3 and 20)</div>
       <form onSubmit={handleSubmit}>
+        <label htmlFor="row">Row</label>
         <input
+          id="row"
           type="number"
           name="row"
           value={form.row}
           onChange={handleOnChange}
           required
         />
+        <label htmlFor="col">Column</label>
         <input
+          id="col"
           type="number"
           name="col"
           value={form.col}

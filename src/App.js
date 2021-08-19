@@ -1,11 +1,11 @@
 import React, { useReducer } from "react";
 import StepOne from "./components/StepOne";
 import StepTwo from "./components/StepTwo";
+import { generateMatrix } from "./utils/generateMatrix";
 import "./App.css";
 
 const initialState = {
   currentStep: 0,
-  rolCol: { row: 0, col: 0 },
   words: [],
   matrix: [],
 };
@@ -16,7 +16,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         currentStep: state.currentStep + 1,
-        rolCol: action.payload,
+        matrix: generateMatrix(action.payload.row, action.payload.col),
       };
     case "addWord":
       return {
@@ -42,7 +42,7 @@ function App() {
       {state.currentStep === 1 && (
         <StepTwo dispatch={dispatch} wordCount={state.words.length} />
       )}
-      {/* {state.currentStep=== 3 && <StepThree/>} */}
+      {/* {state.currentStep === 3 && <StepThree />} */}
     </div>
   );
 }
