@@ -27,6 +27,13 @@ export default function StepTwo({ dispatch, wordCount, words }) {
         />
         <input type="submit" value="Add Word" />
       </form>
+      <button
+        onClick={() => {
+          dispatch({ type: "back" });
+        }}
+      >
+        Back
+      </button>
       {wordCount >= 1 && (
         <button
           onClick={() => {

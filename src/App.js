@@ -8,6 +8,7 @@ import "./App.css";
 
 const initialState = {
   currentStep: 0,
+  rowcol: {},
   words: [],
   matrix: [],
   found: [],
@@ -19,12 +20,18 @@ const reducer = (state, action) => {
       return {
         ...state,
         currentStep: state.currentStep + 1,
+        rowcol: action.payload,
         matrix: generateMatrix(action.payload.row, action.payload.col),
       };
     case "addWord":
       return {
         ...state,
         words: [...state.words, action.payload],
+      };
+    case "regenerateMatrix":
+      return {
+        ...state,
+        matrix: generateMatrix(state.rowcol.row, state.rowcol.col),
       };
     case "findWords":
       return {
@@ -35,6 +42,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         currentStep: state.currentStep + 1,
+      };
+    case "back":
+      return {
+        ...state,
+        currentStep: state.currentStep === 0 ? 0 : state.currentStep - 1,
       };
     default:
       return state;
@@ -54,10 +66,10 @@ function App() {
           words={state.words}
         />
       )}
-      {state.currentStep >= 2 && (
+      {state.currentStep === 2 && (
         <StepThree dispatch={dispatch} matrix={state.matrix} />
       )}
-      {state.currentStep >= 3 && <StepFour foundWords={state.found} />}
+      {state.currentStep === 2 && <StepFour foundWords={state.found} />}
     </div>
   );
 }
