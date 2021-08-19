@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function StepTwo({ dispatch }) {
+export default function StepTwo({ dispatch, wordCount }) {
+  const [form, setForm] = useState({ value: "" });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (form.value.length > 0 && wordCount <= 20) {
+      dispatch({ type: "addWord", payload: form.value });
+    }
+  };
+
   return (
     <>
-      <div>Would you like to make your own matrix?</div>
-      <div className="buttons-container">
-        <button onClick={() => dispatch({ type: "makeCustom", payload: true })}>
-          Yes
-        </button>
-        <button
-          onClick={() => dispatch({ type: "makeCustom", payload: false })}
-        >
-          No
-        </button>
+      <div>
+        Add the words (up to 20) you'd like to find! You're at {wordCount}
       </div>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={form.value}
+          onChange={(event) => setForm({ value: event.target.value })}
+        />
+        <input type="submit" value="Add Word" />
+      </form>
+      <button>Find my words!</button>
     </>
   );
 }
