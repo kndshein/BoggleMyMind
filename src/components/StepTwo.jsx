@@ -17,7 +17,8 @@ export default function StepTwo({ dispatch, wordCount, words }) {
   return (
     <>
       <div>
-        Add the words (up to 20) you'd like to find! You're at {wordCount}
+        Add the 3-letter-and-longer words (up to 20) you'd like to find! You're
+        at {wordCount}
       </div>
       <form onSubmit={handleSubmit}>
         <input
@@ -27,22 +28,24 @@ export default function StepTwo({ dispatch, wordCount, words }) {
         />
         <input type="submit" value="Add Word" />
       </form>
-      <button
-        onClick={() => {
-          dispatch({ type: "back" });
-        }}
-      >
-        Back
-      </button>
-      {wordCount >= 1 && (
+      <div className="buttons-container">
         <button
           onClick={() => {
-            dispatch({ type: "nextStep" });
+            dispatch({ type: "back" });
           }}
         >
-          Next!
+          Back
         </button>
-      )}
+        {wordCount >= 1 && (
+          <button
+            onClick={() => {
+              dispatch({ type: "nextStep" });
+            }}
+          >
+            Next!
+          </button>
+        )}
+      </div>
     </>
   );
 }

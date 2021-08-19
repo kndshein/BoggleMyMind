@@ -4,6 +4,7 @@
 
 .buttons-container {
   display: flex;
+  justify-content: center;
   gap: 20px;
   margin-top: 25px;
 }
@@ -45,4 +46,8 @@
 
 .row {
   display: grid;
+}
+
+form {
+  margin-top: 20px;
 }
