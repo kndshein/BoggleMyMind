@@ -1,5 +1,20 @@
+/* body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+header {
+  margin-bottom: 10%;
+}
+
 .App {
   text-align: center;
+}
+
+.find-button {
+  margin-top: 25px;
 }
 
 .matrix-container {

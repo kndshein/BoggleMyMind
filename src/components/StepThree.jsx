@@ -16,8 +16,9 @@ export default function StepOne({ dispatch, matrix }) {
         );
       })}
       <button
+        className="find-button"
         onClick={() => {
-          dispatch({ type: "nextStep" });
+          dispatch({ type: "findWords" });
         }}
       >
         Find my words!

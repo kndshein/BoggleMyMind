@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import StepOne from "./components/StepOne";
 import StepTwo from "./components/StepTwo";
 import StepThree from "./components/StepThree";
-import { generateMatrix } from "./utils/generateMatrix";
+import { generateMatrix, findWords } from "./utils/mindboggleboggle";
 import "./App.css";
 
 const initialState = {
@@ -26,7 +26,10 @@ const reducer = (state, action) => {
         words: [...state.words, action.payload],
       };
     case "findWords":
-      return state;
+      return {
+        ...state,
+        found: findWords(state.matrix, state.words),
+      };
     case "nextStep":
       return {
         ...state,
@@ -41,14 +44,19 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <div className="App">
-      <header>Boggle Your Mind</header>
+      <h1>Boggle Your Mind</h1>
       {state.currentStep === 0 && <StepOne dispatch={dispatch} />}
       {state.currentStep === 1 && (
-        <StepTwo dispatch={dispatch} wordCount={state.words.length} />
+        <StepTwo
+          dispatch={dispatch}
+          wordCount={state.words.length}
+          words={state.words}
+        />
       )}
       {state.currentStep >= 2 && (
         <StepThree dispatch={dispatch} matrix={state.matrix} />
       )}
+      {/* {state.currentStep >= 3 && <StepFour/>} */}
     </div>
   );
 }

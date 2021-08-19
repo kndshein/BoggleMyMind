@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 
-export default function StepTwo({ dispatch, wordCount }) {
+export default function StepTwo({ dispatch, wordCount, words }) {
   const [form, setForm] = useState({ value: "" });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (form.value.length > 0 && wordCount <= 20) {
+    if (
+      form.value.length > 2 &&
+      wordCount <= 20 &&
+      !words.includes(form.value)
+    ) {
       dispatch({ type: "addWord", payload: form.value });
     }
   };
