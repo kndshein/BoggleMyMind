@@ -23,7 +23,15 @@ export default function StepTwo({ dispatch, wordCount }) {
         />
         <input type="submit" value="Add Word" />
       </form>
-      <button>Find my words!</button>
+      {wordCount >= 1 && (
+        <button
+          onClick={() => {
+            dispatch({ type: "nextStep" });
+          }}
+        >
+          Next!
+        </button>
+      )}
     </>
   );
 }

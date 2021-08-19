@@ -23,6 +23,11 @@ const reducer = (state, action) => {
         ...state,
         words: [...state.words, action.payload],
       };
+    case "nextStep":
+      return {
+        ...state,
+        currentStep: state.currentStep + 1,
+      };
     default:
       return state;
   }
@@ -37,6 +42,7 @@ function App() {
       {state.currentStep === 1 && (
         <StepTwo dispatch={dispatch} wordCount={state.words.length} />
       )}
+      {/* {state.currentStep=== 3 && <StepThree/>} */}
     </div>
   );
 }
