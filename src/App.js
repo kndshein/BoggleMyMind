@@ -58,6 +58,20 @@ function App() {
   return (
     <div className="App">
       <h1>Boggle Your Mind</h1>
+      {state.currentStep >= 1 && (
+        <div className="words-container-container">
+          Your current words:{" "}
+          <div className="words-container">
+            {state.words.map((word, index) => {
+              return (
+                <div className="word" key={index}>
+                  {word}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
       {state.currentStep === 0 && <StepOne dispatch={dispatch} />}
       {state.currentStep === 1 && (
         <StepTwo
